@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" modified="2026-08-20T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram id="usecase-diagram" name="Use-Case Diagram">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- System Boundary -->
+        <mxCell id="boundary" value="Multi-Cloud Asset Cost Optimization Portal" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontColor=#CC0000;align=center;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="760" height="330" as="geometry" />
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="actor_finops" value="FinOps Analyst" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="170" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actor_cloudadmin" value="Cloud Administrator" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="170" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases: Row 1 -->
+        <mxCell id="uc_upload" value="Upload Billing CSV" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="80" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_parse" value="Parse &amp; Categorize Billing Data" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="80" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_dashboard" value="View Cost Dashboard" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="80" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases: Row 2 -->
+        <mxCell id="uc_budget" value="Set Budget Threshold" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="190" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_idle" value="Detect Idle Compute Instances" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="190" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_storage" value="Detect Unattached Storage Volumes" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="190" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases: Row 3 -->
+        <mxCell id="uc_report" value="Generate Savings Report" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="300" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc_alert" value="Send Budget Breach Alert" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="300" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Actor Associations (solid, no arrowhead) -->
+        <mxCell id="assoc1" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_finops" target="uc_upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc2" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_finops" target="uc_budget">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc3" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_finops" target="uc_report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc4" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_finops" target="uc_dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc5" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_cloudadmin" target="uc_idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc6" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_cloudadmin" target="uc_storage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc7" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="actor_cloudadmin" target="uc_dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Include Relationship (dashed, open arrow, labeled) -->
+        <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;" edge="1" parent="1" source="uc_upload" target="uc_parse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Extend Relationship (dashed, open arrow, labeled) -->
+        <!-- Extending use case (Send Budget Breach Alert) points TO base use case (Set Budget Threshold) -->
+        <mxCell id="ext1" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;dashed=1;html=1;fontSize=10;" edge="1" parent="1" source="uc_alert" target="uc_budget">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
